@@ -3,6 +3,29 @@ const toggler   = $('#icon');
 const sidebar   = $('#sidebar');
 const backdrop  = $('#backdrop');
 
+// fungsi untuk cek ukuran layar & atur state
+function handleResize() {
+  if (window.innerWidth < 992) {
+    // selalu full (expand) di tablet/HP
+    sidebar.addClass('expand');
+    // toggler.removeClass('ri-arrow-right-double-line').addClass('ri-arrow-left-double-line');
+  } else {
+    // di desktop, biarkan sesuai toggle user
+    // default expand (lebar penuh)
+    // if (!sidebar.hasClass('expand')) {
+    //   toggler.removeClass('ri-arrow-left-double-line').addClass('ri-arrow-right-double-line');
+    // } else {
+    //   toggler.removeClass('ri-arrow-right-double-line').addClass('ri-arrow-left-double-line');
+    // }
+  }
+}
+
+// panggil saat load pertama
+handleResize();
+
+// panggil setiap resize
+$(window).resize(handleResize);
+
 hamburger.click(function () {
   if (window.innerWidth >= 992) {
     // MODE DESKTOP: toggle "expand"
@@ -10,16 +33,17 @@ hamburger.click(function () {
     // toggler.toggleClass('ri-arrow-right-double-line ri-arrow-left-double-line');
   } else {
     // MODE MOBILE/TABLET: buka sidebar + backdrop
-    sidebar.addClass('active');
+    sidebar.addClass('active expand'); // selalu expand
     backdrop.addClass('active');
   }
 });
 
-// backdrop untuk close di mobile
+// backdrop close
 backdrop.click(function () {
   sidebar.removeClass('active');
   backdrop.removeClass('active');
 });
+
 
 
 // CHARTJS
