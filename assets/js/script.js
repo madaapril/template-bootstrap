@@ -1,10 +1,26 @@
 const hamburger = $('.toggle-btn');
-const toggler = $('#icon');
-hamburger.click(function(){
-    $('#sidebar').toggleClass('expand');
-    toggler.toggleClass('ri-arrow-right-double-line');
-    toggler.toggleClass('ri-arrow-left-double-line');
-})
+const toggler   = $('#icon');
+const sidebar   = $('#sidebar');
+const backdrop  = $('#backdrop');
+
+hamburger.click(function () {
+  if (window.innerWidth >= 992) {
+    // MODE DESKTOP: toggle "expand"
+    sidebar.toggleClass('expand');
+    // toggler.toggleClass('ri-arrow-right-double-line ri-arrow-left-double-line');
+  } else {
+    // MODE MOBILE/TABLET: buka sidebar + backdrop
+    sidebar.addClass('active');
+    backdrop.addClass('active');
+  }
+});
+
+// backdrop untuk close di mobile
+backdrop.click(function () {
+  sidebar.removeClass('active');
+  backdrop.removeClass('active');
+});
+
 
 // CHARTJS
 new Chart(document.getElementById("bar-chart-grouped"), {

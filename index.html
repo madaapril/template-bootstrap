@@ -18,19 +18,29 @@
   <body>
     <div class="wrapper">
       <!-- If you want the default closed, delete the expand class, change icon to arrow-right -->
-      <aside id="sidebar" class="expand">
-        <div class="p-4">
+      <aside id="sidebar" class="expand px-4 pt-1 pb-2">
+        <div class="py-4">
           <div class="sidebar-logo">
             <a href="#" class="large">MadaAdmin</a>
             <a href="#" class="small">M</a>
           </div>
         </div>
 
-        <ul class="sidebar-nav">
+        <h3 class="mb-2 text-uppercase small text-secondary d-flex align-items-center">
+          <span class="menu-group-title" :class="sidebarToggle ? 'd-none d-xl-inline' : ''">
+            MENU
+          </span>
+
+          <!-- icon pakai remixicon -->
+          <i class="menu-group-title-icon ri-more-fill mx-auto"></i>
+        </h3>
+
+
+        <ul class="sidebar-nav d-flex flex-column gap-1">
           <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
-              <i class="ri-file-user-line"></i>
-              <span>Profile</span>
+            <a href="#" class="sidebar-link menu-item-active">
+              <i class="ri-dashboard-line"></i>
+              <span>Dashboard</span>
             </a>
           </li>
           <li class="sidebar-item">
@@ -124,13 +134,17 @@
         </div>
       </aside>
 
+      <!-- Backdrop -->
+      <div id="backdrop" class="backdrop"></div>
+
       <div class="main">
         <!-- TOPBAR -->
         <nav class="navbar navbar-expand px-4 py-3 d-flex justify-content-between">
           <!-- TOGGLE BUTTON -->
           <div class="d-flex justify-content-between gap-2">
             <button class="toggle-btn" type="button">
-              <i id="icon" class="ri-arrow-left-double-line"></i>
+              <!-- <i id="icon" class="ri-arrow-left-double-line"></i> -->
+              <i id="icon" class="ri-menu-2-line"></i>
             </button>
 
             <!-- SEARCH BAR -->
